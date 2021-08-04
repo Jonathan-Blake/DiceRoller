@@ -49,10 +49,7 @@ public class PostfixConvertor {
                 }
             }
         }
-        while (!operationsStack.isEmpty()) {
-            out.append(operationsStack.pop().getSymbol());
-            out.append(' ');
-        }
+        operationsStack.forEach(op -> out.append(op.getSymbol()).append(Constant.SPACE));
         final var ret = out.toString();
         System.out.println("Converted to postfix : " + expr + " -> " + ret);
         return ret;
