@@ -9,14 +9,14 @@ import static dice.equation.expression.operation.Precedence.*;
 public enum Operation {
 
     PLUS('+', Double::sum, LOW),
-    MINUS('-', (a, b) -> a-b, LOW),
-    MULTIPLY('*', (a, b) -> a*b, HIGH),
-    DIVIDE('/', (a, b) -> a/b, HIGH),
-    DICE('d', (a, b) -> a * ( Constant.RANDOM.nextInt(b.intValue())+ 1 ), HIGH),
-    OPEN_BRACKET('(', (a,b)-> {
+    MINUS('-', (a, b) -> a - b, LOW),
+    MULTIPLY('*', (a, b) -> a * b, HIGH),
+    DIVIDE('/', (a, b) -> a / b, HIGH),
+    DICE('d', (a, b) -> a * (Constant.RANDOM.nextInt(b.intValue()) + 1), HIGH),
+    OPEN_BRACKET('(', (a, b) -> {
         throw new InvalidOperationException("Attempted to execute Bracket as operation");
     }, BRACKET),
-    CLOSE_BRACKET(')', (a,b)-> {
+    CLOSE_BRACKET(')', (a, b) -> {
         throw new InvalidOperationException("Attempted to execute Bracket as operation");
     }, BRACKET);
 
@@ -32,16 +32,16 @@ public enum Operation {
     }
 
     public static Operation fromSymbol(char symbol) {
-        for(Operation operation: values()){
-            if(symbol == operation.getSymbol()){
+        for (Operation operation : values()) {
+            if (symbol == operation.getSymbol()) {
                 return operation;
             }
         }
         return null;
     }
 
-    public double resolve(double a, double b){
-        return function.apply(a,b);
+    public double resolve(double a, double b) {
+        return function.apply(a, b);
     }
 
     public char getSymbol() {
@@ -68,7 +68,7 @@ public enum Operation {
             //closing empty stack
             return true;
         }
-        return getPrecedence().compareTo(op.getPrecedence())>=0;
+        return getPrecedence().compareTo(op.getPrecedence()) >= 0;
     }
 }
 

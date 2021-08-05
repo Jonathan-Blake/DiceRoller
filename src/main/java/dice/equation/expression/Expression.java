@@ -32,9 +32,9 @@ public class Expression implements Operand {
 
     @Override
     public StringBuilder asPostFix(int level) {
-        return left.asPostFix(level+1)
+        return left.asPostFix(level + 1)
                 .append(Constant.SPACE)
-                .append(right.asPostFix(level+1))
+                .append(right.asPostFix(level + 1))
                 .append(Constant.SPACE)
                 .append(operation.getSymbol());
     }

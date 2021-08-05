@@ -13,13 +13,15 @@ public class Interpreter {
     private final EnumSet<Operation> supportedOperations = EnumSet.allOf(Operation.class);
     private final PostfixConvertor postfixConvertor = new PostfixConvertor(getSupportedOperations());
 
-    public Operand createFromInfix(final String expression){
+    public Operand createFromInfix(final String expression) {
         return createFromPostfix(postfixConvertor.convertToPostfix(expression));
     }
-    public Operand createFromPostfix(final String expression){
+
+    public Operand createFromPostfix(final String expression) {
         return buildSyntaxTree(expression);
     }
-    public Set<Operation> getSupportedOperations(){
+
+    public Set<Operation> getSupportedOperations() {
         return supportedOperations;
     }
 
@@ -29,7 +31,7 @@ public class Interpreter {
         if (tokens.length == 1) {
             return getOperandFromToken(tokens[0]);
         }
-        for (final String token : tokens){
+        for (final String token : tokens) {
             final var currentOperation = Operation.fromSymbol(token.charAt(0));
             if (supportedOperations.contains(currentOperation)) {// If token is an operator
                 stack.push(new Expression(currentOperation, stack.pop(), stack.pop()));

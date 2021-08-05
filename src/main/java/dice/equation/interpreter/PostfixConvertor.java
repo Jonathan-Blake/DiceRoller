@@ -31,7 +31,7 @@ public class PostfixConvertor {
         return ret;
     }
 
-    private Operation handleToken(final Deque<Operation> operationsStack,final StringBuilder out,final String token, Operation topSymbol) {
+    private Operation handleToken(final Deque<Operation> operationsStack, final StringBuilder out, final String token, Operation topSymbol) {
         boolean empty;
         final var currentOperation = Operation.fromSymbol(token.charAt(0));
         if (!supportedOperations.contains(currentOperation)) {
