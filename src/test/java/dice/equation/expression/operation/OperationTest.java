@@ -127,11 +127,9 @@ class OperationTest {
         @Test
         void hasPrecedenceOpenBracket(){
             EnumSet<Operation> values = EnumSet.allOf(Operation.class);
-            values.remove(Operation.OPEN_BRACKET);
             for(Operation operation: values){
                 assertFalse(Operation.OPEN_BRACKET.hasPrecedence(operation),operation+" has lower precedence than '('");
             }
-            assertFalse(Operation.OPEN_BRACKET.hasPrecedence(Operation.OPEN_BRACKET));
         }
         @Test
         void hasPrecedenceCloseBracket(){

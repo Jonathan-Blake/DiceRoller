@@ -11,7 +11,7 @@ import java.util.Set;
 public class Interpreter {
 
     private final EnumSet<Operation> supportedOperations = EnumSet.allOf(Operation.class);
-    private final PostfixConvertor postfixConvertor = new PostfixConvertor(this);
+    private final PostfixConvertor postfixConvertor = new PostfixConvertor(getSupportedOperations());
 
     public Operand createFromInfix(final String expression){
         return createFromPostfix(postfixConvertor.convertToPostfix(expression));
