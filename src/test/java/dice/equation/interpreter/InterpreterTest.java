@@ -5,7 +5,6 @@ import dice.equation.expression.Operand;
 import dice.equation.expression.Value;
 import dice.equation.expression.Variable;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +14,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InterpreterTest {
     private static final Map<String, Integer> EMPTY_MAP = Collections.emptyMap();
@@ -97,85 +97,6 @@ class InterpreterTest {
                 assertTrue(exp instanceof Expression);
                 assertEquals(expectedResult, exp.evaluate(map));
             }
-//            @Test
-//            void OneMinusOneEqualsZero(){
-//                final Operand exp = interpreter.createFromInfix("1 - 1");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(0, exp.evaluate(ABCD_MAP));
-//            }
-//
-//            @Test
-//            void TwoTimesThreeEqualsSix(){
-//                final Operand exp = interpreter.createFromInfix("2 * 3");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(6, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void ThreeTimesTwoEqualsSix(){
-//                final Operand exp = interpreter.createFromInfix("3 * 2");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(6, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void TwoDividedThreeEqualsTwoThirds(){
-//                final Operand exp = interpreter.createFromInfix("2 / 3");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(2d / 3d, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void ThreeDividedTwoEqualsOnePointFive(){
-//                final Operand exp = interpreter.createFromInfix("3 / 2");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(1.5, exp.evaluate(ABCD_MAP));
-////            }
-//            @Test
-//            void OnePlusOneEqualsTwoByMap(){
-//                final Operand exp = interpreter.createFromInfix("A + A");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(2, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void OneMinusOneEqualsZeroByMap(){
-//                final Operand exp = interpreter.createFromInfix("A - A");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(0, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void TwoTimesThreeEqualsSixByMap(){
-//                final Operand exp = interpreter.createFromInfix("B * C");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(6, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void ThreeTimesTwoEqualsSixByMap(){
-//                final Operand exp = interpreter.createFromInfix("C * B");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(6, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void TwoDividedThreeEqualsTwoThirdsByMap(){
-//                final Operand exp = interpreter.createFromInfix("B / C");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(2d / 3d, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void ThreeDividedTwoEqualsOnePointFiveByMap(){
-//                final Operand exp = interpreter.createFromInfix("C / B");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(1.5, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void ThreeDiceOneEqualsThree(){
-//                final Operand exp = interpreter.createFromInfix("3 d 1");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(3, exp.evaluate(ABCD_MAP));
-//            }
-//            @Test
-//            void ThreeDiceOneEqualsThreeByMap(){
-//                final Operand exp = interpreter.createFromInfix("C d A");
-//                assertTrue(exp instanceof Expression);
-//                assertEquals(3, exp.evaluate(ABCD_MAP));
-//            }
         }
 
         @Nested
