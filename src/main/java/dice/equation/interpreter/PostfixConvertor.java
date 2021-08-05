@@ -3,6 +3,7 @@ package dice.equation.interpreter;
 import dice.equation.expression.Constant;
 import dice.equation.expression.operation.Operation;
 
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Set;
@@ -23,9 +24,7 @@ public class PostfixConvertor {
         if (tokens.length == 1) {
             return expr;
         }
-        for (String token : tokens) {
-            topSymbol = handleToken(operationsStack, out, token, topSymbol);
-        }
+        Arrays.stream(tokens).sequential().filter(token -> !token.isBlank()).forEach(token -> handleToken(operationsStack, out, token, topSymbol));
         operationsStack.forEach(op -> appendSymbol(out, op.getSymbol()));
         final var ret = out.toString();
         System.out.println("Converted to postfix : " + expr + " -> " + ret);
@@ -34,10 +33,6 @@ public class PostfixConvertor {
 
     private Operation handleToken(final Deque<Operation> operationsStack,final StringBuilder out,final String token, Operation topSymbol) {
         boolean empty;
-        if (token.isBlank()) {
-            System.out.println("Skipping Blank token, please check formula for double spaces.");
-            return topSymbol;
-        }
         final var currentOperation = Operation.fromSymbol(token.charAt(0));
         if (!supportedOperations.contains(currentOperation)) {
             out.append(token).append(Constant.SPACE);
